@@ -1,0 +1,108 @@
+.toast-container {
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    background-color: transparent;
+    z-index: 1000;
+    width: 312px;
+    margin: .75rem;
+    gap: 1rem;
+}
+
+.toast-container[data-position^="top-"] {
+    top: 0;
+}
+
+.toast-container[data-position^="bottom-"] {
+    bottom: 0;
+}
+
+.toast-container[data-position$="-left"] {
+    left: 0;
+}
+
+.toast-container[data-position$="-right"] {
+    right: 0;
+}
+
+.toast-container[data-position$="-center"] {
+    left: 50%;
+    transform: translateX(-45%);
+}
+
+.toast {
+    box-sizing: border-box;
+    padding: .5rem;
+    background-color: white;
+    border-radius: .25rem;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    height: 64px;
+    direction: ltr;
+    cursor: pointer;
+    transition: transform 300ms ease-in-out;
+}
+
+.toast-container .toast.toast-show {
+    transform: translate(0, 0) !important;
+}
+
+.toast-container[data-position$="-left"] .toast {
+    transform: translateX(-110%);
+}
+
+.toast-container[data-position$="-right"] .toast {
+    transform: translateX(110%);
+}
+
+.toast-container[data-position="top-center"] .toast {
+    transform: translateY(-110vh);
+}
+
+.toast-container[data-position="bottom-center"] .toast {
+    transform: translateY(110vh);
+}
+
+.toast-body {
+    flex: 1;
+    margin: auto 0;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    padding: .2rem;
+}
+
+.toast--closeBtn {
+    background-color: transparent;
+    outline: none;
+    align-self: flex-start;
+    cursor: pointer;
+    padding: 0;
+    border: none;
+}
+
+.toast--closeBtn > svg {
+    height: 16px;
+    width: 14px;
+    fill: #ccc;
+    transition: fill .2s ease-in-out;
+}
+
+.toast--closeBtn:hover > svg {
+    fill: #8a8a8a;
+}
+
+.toast-progressbar {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: calc(100% * var(--progress));
+    height: .3rem;
+    overflow: hidden;
+    z-index: 1000;
+    border-radius: 0 0 .25rem .25rem;
+    background-color: var(--progress-color);
+}
